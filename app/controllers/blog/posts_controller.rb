@@ -8,7 +8,7 @@ class Blog::PostsController < BlogController
 
   def index
     if !params[:page].blank? && params[:page].to_i == 1
-      permanent_redirect_to(blog_root_url)
+      return permanent_redirect_to(blog_root_url)
     end
     respond_with (@blog_posts) do |format|
       format.html
