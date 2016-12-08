@@ -7,6 +7,9 @@ class Blog::PostsController < BlogController
   respond_to :html, :js, :rss
 
   def index
+    if !params[:page].blank? && params[:page].to_i == 1
+      return permanent_redirect_to(blog_root_url)
+    end
     respond_with (@blog_posts) do |format|
       format.html
       format.rss
